@@ -23,7 +23,25 @@ EduFund is a crowdfunding platform that helps financially struggling secondary s
 #### 5. Install project requirements
     pip install -r requirements.txt
 
-#### 6. Run the server
+#### 6. Apply the migrations
+    python manage.py makemigrations
+    python manage.py migrate
+
+#### 7. Create a super user
+    python manage.py createsuperuser
+
+#### 8. Run the server
     python manage.py runserver
 
-#### 7. Go to http://localhost:8000/
+#### 7. Login to the django admin panel
+    Go to http://localhost:8000/admin
+
+#### 8. Check other routes as well
+    http://localhost:8000/api/users
+    http://localhost:8000/api/users/<id>
+    http://localhost:8000/api/token
+    http://localhost:8000/api/token/refresh
+    http://localhost:8000/api/token/verify
+
+    and more ...
+
