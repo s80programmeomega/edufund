@@ -40,7 +40,9 @@ class Representative(models.Model):
 class Student(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+    student_class = models.CharField(max_length=100, blank=True)
+    student_story = models.TextField(blank=True)
+    email = models.EmailField(unique=True, blank=True)
     phone = models.CharField(max_length=20)
     photo = models.ImageField(upload_to="images/school/students/", blank=True)
 
