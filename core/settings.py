@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Custom
     'users',
     'school',
+    'sponsor',
     'rest_framework',
     'rest_framework_simplejwt',
 ]

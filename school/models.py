@@ -1,3 +1,5 @@
+import datetime
+from tabnanny import verbose
 from django.db import models
 
 
@@ -21,11 +23,15 @@ class Representative(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to="school/students/photo")
+    photo = models.ImageField(
+        upload_to="images/school/representative/", blank=True)
     school = models.ForeignKey(
-        School, on_delete=models.CASCADE, related_name="representatives")
+        "School", on_delete=models.CASCADE, related_name="representatives")
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Schools Representative"
 
     def __str__(self):
         return self.email
@@ -36,10 +42,10 @@ class Student(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to="school/students/photo")
+    photo = models.ImageField(upload_to="images/school/students/", blank=True)
 
     school = models.ForeignKey(
-        School, on_delete=models.CASCADE, related_name="students")
+        "School", on_delete=models.CASCADE, related_name="students")
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
@@ -55,20 +61,60 @@ class SchoolDocument(models.Model):
         APROOVAL_LETTER = 'APROOVAL_LETTER', 'Approval Letter'
 
     school = models.ForeignKey(
-        School, on_delete=models.CASCADE, related_name="documents")
-    document = models.FileField(upload_to='school/documents/')
+        "School", on_delete=models.CASCADE, related_name="documents")
+    document = models.FileField(upload_to='documents/school/')
     type_of_document = models.CharField(
         max_length=100, choices=DocumentType.choices, default=DocumentType.ACCREDITATION_CERTIFICATE)
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.school.name
+
 
 class SchoolImage(models.Model):
 
     school = models.ForeignKey(
-        School, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(upload_to='school/images/')
+        "School", on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to='images/school/')
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.school.name
+
+
+class FundingCampaign(models.Model):
+
+    class FundingSatus(models.TextChoices):
+        OPEN = "OPEN", 'open'
+        CLOSE = "CLOSE", "close"
+
+    name = models.CharField(max_length=150)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    reason = models.CharField(max_length=300, blank=True)
+    description = models.TextField(blank=True)
+
+    schools = models.ManyToManyField(
+        to="School", related_name="funding_campaigns", blank=True,)
+    sponsors = models.ManyToManyField(
+        to="sponsor.Sponsor", related_name="funding_campaigns", blank=True)
+
+    status = models.CharField(
+        max_length=100, choices=FundingSatus.choices, default=FundingSatus.OPEN)
+
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+
+    date_added = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
+    @property
+    def funding_progression(self):
+        progression =  (self.donations.all().aggregate(models.Sum('amount'))['amount__sum'] / self.amount)*100 if self.donations.all() else 0
+        return f"{round(progression, 2)} %"
+
+    def __str__(self):
+        return self.name
