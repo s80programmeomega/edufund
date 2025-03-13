@@ -1,5 +1,4 @@
-import datetime
-from tabnanny import verbose
+
 from django.db import models
 
 
@@ -42,9 +41,12 @@ class Student(models.Model):
     last_name = models.CharField(max_length=100)
     student_class = models.CharField(max_length=100, blank=True)
     student_story = models.TextField(blank=True)
-    email = models.EmailField(unique=True, blank=True)
     phone = models.CharField(max_length=20)
     photo = models.ImageField(upload_to="images/school/students/", blank=True)
+
+    parent_consent = models.FileField(
+        upload_to="documents/school/parent_consent/", blank=True
+    )
 
     school = models.ForeignKey(
         "School", on_delete=models.CASCADE, related_name="students")
@@ -115,7 +117,8 @@ class FundingCampaign(models.Model):
 
     @property
     def funding_progression(self):
-        progression =  (self.donations.all().aggregate(models.Sum('amount'))['amount__sum'] / self.amount)*100 if self.donations.all() else 0
+        progression = (self.donations.all().aggregate(models.Sum('amount'))[
+                       'amount__sum'] / self.amount)*100 if self.donations.all() else 0
         return f"{round(progression, 2)} %"
 
     def __str__(self):

@@ -1,5 +1,13 @@
+from enum import Enum
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+
+
+class UserType(models.TextChoices):
+    STAFF = "STAFF", 'Staff'
+    ADMIN = 'ADMIN', 'Admin'
+    SCHOOL = 'SCHOOL', 'School'
+    SPONSOR = 'SPONSOR', 'Sponsor'
 
 
 class CustomUserManager(BaseUserManager):
@@ -15,6 +23,8 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
+
+        extra_fields.setdefault('user_type', UserType.ADMIN)
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -29,6 +39,13 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """Custom user model with email as the unique identifier.
     """
+
+    user_type = models.CharField(
+        max_length=20,
+        choices=UserType.choices,
+        default=UserType.STAFF
+    )
+
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
@@ -39,7 +56,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'user_type']
+
+    def save(self, *args, **kwargs):
+        # If user is a superuser, set user_type to ADMIN
+        if self.is_superuser:
+            self.user_type = UserType.ADMIN
+            self.is_staff = True  # Ensure staff status for admin access
+        elif self.user_type not in {UserType.SCHOOL, UserType.SPONSOR}:
+            self.user_type = UserType.STAFF
+
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'user'

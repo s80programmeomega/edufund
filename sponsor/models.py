@@ -10,6 +10,8 @@ class Sponsor(models.Model):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
+    photo = models.ImageField(
+        upload_to="images/sponsor/", blank=True)
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
@@ -25,7 +27,7 @@ class SponsorRepresentative(models.Model):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
     photo = models.ImageField(
-        upload_to="images/school/representative/", blank=True)
+        upload_to="images/sponsor/representative/", blank=True)
 
     sponsor = models.ForeignKey(
         "Sponsor", on_delete=models.CASCADE, related_name="representative", blank=True)
