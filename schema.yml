@@ -1,0 +1,2410 @@
+openapi: 3.0.3
+info:
+  title: EduFund
+  version: 1.0.0
+  description: EduFund is a crowdfunding platform that helps financially struggling
+    secondary school students in Nigerian (public) schools raise funds for school
+    fees and essential learning materials.
+paths:
+  /api/donation/:
+    get:
+      operationId: donation_list
+      tags:
+      - donation
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Donation'
+          description: ''
+    post:
+      operationId: donation_create
+      tags:
+      - donation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Donation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Donation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Donation'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Donation'
+          description: ''
+  /api/donation/{id}/:
+    get:
+      operationId: donation_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this donation.
+        required: true
+      tags:
+      - donation
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Donation'
+          description: ''
+    put:
+      operationId: donation_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this donation.
+        required: true
+      tags:
+      - donation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Donation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Donation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Donation'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Donation'
+          description: ''
+    patch:
+      operationId: donation_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this donation.
+        required: true
+      tags:
+      - donation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDonation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDonation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDonation'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Donation'
+          description: ''
+    delete:
+      operationId: donation_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this donation.
+        required: true
+      tags:
+      - donation
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/funding-campaign/:
+    get:
+      operationId: funding_campaign_list
+      tags:
+      - funding-campaign
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FundingCampaign'
+          description: ''
+    post:
+      operationId: funding_campaign_create
+      tags:
+      - funding-campaign
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FundingCampaign'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FundingCampaign'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FundingCampaign'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingCampaign'
+          description: ''
+  /api/funding-campaign/{id}/:
+    get:
+      operationId: funding_campaign_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this funding campaign.
+        required: true
+      tags:
+      - funding-campaign
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingCampaign'
+          description: ''
+    put:
+      operationId: funding_campaign_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this funding campaign.
+        required: true
+      tags:
+      - funding-campaign
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FundingCampaign'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FundingCampaign'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FundingCampaign'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingCampaign'
+          description: ''
+    patch:
+      operationId: funding_campaign_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this funding campaign.
+        required: true
+      tags:
+      - funding-campaign
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFundingCampaign'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFundingCampaign'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFundingCampaign'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingCampaign'
+          description: ''
+    delete:
+      operationId: funding_campaign_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this funding campaign.
+        required: true
+      tags:
+      - funding-campaign
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/representative/:
+    get:
+      operationId: representative_list
+      tags:
+      - representative
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Representative'
+          description: ''
+    post:
+      operationId: representative_create
+      tags:
+      - representative
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Representative'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Representative'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Representative'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative'
+          description: ''
+  /api/representative/{id}/:
+    get:
+      operationId: representative_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Schools Representative.
+        required: true
+      tags:
+      - representative
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative'
+          description: ''
+    put:
+      operationId: representative_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Schools Representative.
+        required: true
+      tags:
+      - representative
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Representative'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Representative'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Representative'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative'
+          description: ''
+    patch:
+      operationId: representative_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Schools Representative.
+        required: true
+      tags:
+      - representative
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRepresentative'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRepresentative'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRepresentative'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative'
+          description: ''
+    delete:
+      operationId: representative_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Schools Representative.
+        required: true
+      tags:
+      - representative
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/school/:
+    get:
+      operationId: school_list
+      tags:
+      - school
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/School'
+          description: ''
+    post:
+      operationId: school_create
+      tags:
+      - school
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/School'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/School'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/School'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+  /api/school-document/:
+    get:
+      operationId: school_document_list
+      tags:
+      - school-document
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SchoolDocument'
+          description: ''
+    post:
+      operationId: school_document_create
+      tags:
+      - school-document
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SchoolDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SchoolDocument'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolDocument'
+          description: ''
+  /api/school-document/{id}/:
+    get:
+      operationId: school_document_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school document.
+        required: true
+      tags:
+      - school-document
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolDocument'
+          description: ''
+    put:
+      operationId: school_document_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school document.
+        required: true
+      tags:
+      - school-document
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SchoolDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SchoolDocument'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolDocument'
+          description: ''
+    patch:
+      operationId: school_document_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school document.
+        required: true
+      tags:
+      - school-document
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolDocument'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolDocument'
+          description: ''
+    delete:
+      operationId: school_document_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school document.
+        required: true
+      tags:
+      - school-document
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/school-image/:
+    get:
+      operationId: school_image_list
+      tags:
+      - school-image
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SchoolImage'
+          description: ''
+    post:
+      operationId: school_image_create
+      tags:
+      - school-image
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SchoolImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SchoolImage'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolImage'
+          description: ''
+  /api/school-image/{id}/:
+    get:
+      operationId: school_image_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school image.
+        required: true
+      tags:
+      - school-image
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolImage'
+          description: ''
+    put:
+      operationId: school_image_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school image.
+        required: true
+      tags:
+      - school-image
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SchoolImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SchoolImage'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolImage'
+          description: ''
+    patch:
+      operationId: school_image_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school image.
+        required: true
+      tags:
+      - school-image
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolImage'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolImage'
+          description: ''
+    delete:
+      operationId: school_image_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school image.
+        required: true
+      tags:
+      - school-image
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/school/{id}/:
+    get:
+      operationId: school_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school.
+        required: true
+      tags:
+      - school
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+    put:
+      operationId: school_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school.
+        required: true
+      tags:
+      - school
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/School'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/School'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/School'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+    patch:
+      operationId: school_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school.
+        required: true
+      tags:
+      - school
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchool'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchool'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchool'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: ''
+    delete:
+      operationId: school_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school.
+        required: true
+      tags:
+      - school
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/sponsor/:
+    get:
+      operationId: sponsor_list
+      tags:
+      - sponsor
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+          description: ''
+    post:
+      operationId: sponsor_create
+      tags:
+      - sponsor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sponsor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sponsor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sponsor'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sponsor'
+          description: ''
+  /api/sponsor-representative/:
+    get:
+      operationId: sponsor_representative_list
+      tags:
+      - sponsor-representative
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SponsorRepresentative'
+          description: ''
+    post:
+      operationId: sponsor_representative_create
+      tags:
+      - sponsor-representative
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SponsorRepresentative'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SponsorRepresentative'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SponsorRepresentative'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SponsorRepresentative'
+          description: ''
+  /api/sponsor-representative/{id}/:
+    get:
+      operationId: sponsor_representative_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor representative.
+        required: true
+      tags:
+      - sponsor-representative
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SponsorRepresentative'
+          description: ''
+    put:
+      operationId: sponsor_representative_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor representative.
+        required: true
+      tags:
+      - sponsor-representative
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SponsorRepresentative'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SponsorRepresentative'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SponsorRepresentative'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SponsorRepresentative'
+          description: ''
+    patch:
+      operationId: sponsor_representative_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor representative.
+        required: true
+      tags:
+      - sponsor-representative
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSponsorRepresentative'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSponsorRepresentative'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSponsorRepresentative'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SponsorRepresentative'
+          description: ''
+    delete:
+      operationId: sponsor_representative_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor representative.
+        required: true
+      tags:
+      - sponsor-representative
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/sponsor/{id}/:
+    get:
+      operationId: sponsor_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor.
+        required: true
+      tags:
+      - sponsor
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sponsor'
+          description: ''
+    put:
+      operationId: sponsor_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor.
+        required: true
+      tags:
+      - sponsor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sponsor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sponsor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sponsor'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sponsor'
+          description: ''
+    patch:
+      operationId: sponsor_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor.
+        required: true
+      tags:
+      - sponsor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSponsor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSponsor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSponsor'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sponsor'
+          description: ''
+    delete:
+      operationId: sponsor_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this sponsor.
+        required: true
+      tags:
+      - sponsor
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/student/:
+    get:
+      operationId: student_list
+      tags:
+      - student
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+          description: ''
+    post:
+      operationId: student_create
+      tags:
+      - student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+  /api/student/{id}/:
+    get:
+      operationId: student_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - student
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    put:
+      operationId: student_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    patch:
+      operationId: student_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    delete:
+      operationId: student_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - student
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/token/:
+    post:
+      operationId: token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/token/refresh/:
+    post:
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/token/verify/:
+    post:
+      operationId: token_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenVerify'
+          description: ''
+  /api/users/:
+    get:
+      operationId: users_list
+      tags:
+      - users
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: users_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}/:
+    get:
+      operationId: users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Donation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        sponsor:
+          type: string
+          format: uri
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        funding_campaign:
+          type: integer
+      required:
+      - amount
+      - date_added
+      - funding_campaign
+      - id
+      - last_modified
+      - sponsor
+    FundingCampaign:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        name:
+          type: string
+          maxLength: 150
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        reason:
+          type: string
+          maxLength: 300
+        description:
+          type: string
+        schools:
+          type: array
+          items:
+            type: string
+            format: uri
+        sponsors:
+          type: array
+          items:
+            type: string
+            format: uri
+        funding_progression:
+          type: string
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        start_date:
+          type: string
+          format: date-time
+          nullable: true
+        end_date:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - amount
+      - funding_progression
+      - name
+      - pk
+      - schools
+      - sponsors
+    PatchedDonation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        sponsor:
+          type: string
+          format: uri
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        funding_campaign:
+          type: integer
+    PatchedFundingCampaign:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        name:
+          type: string
+          maxLength: 150
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        reason:
+          type: string
+          maxLength: 300
+        description:
+          type: string
+        schools:
+          type: array
+          items:
+            type: string
+            format: uri
+        sponsors:
+          type: array
+          items:
+            type: string
+            format: uri
+        funding_progression:
+          type: string
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        start_date:
+          type: string
+          format: date-time
+          nullable: true
+        end_date:
+          type: string
+          format: date-time
+          nullable: true
+    PatchedRepresentative:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        id_number:
+          type: string
+          maxLength: 100
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          format: uri
+        school:
+          type: string
+          format: uri
+    PatchedSchool:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        id_number:
+          type: string
+          maxLength: 100
+        name:
+          type: string
+          maxLength: 100
+        location:
+          type: string
+          maxLength: 100
+        address:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+    PatchedSchoolDocument:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        school:
+          type: string
+          format: uri
+        document:
+          type: string
+          format: uri
+        type_of_document:
+          $ref: '#/components/schemas/TypeOfDocumentEnum'
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedSchoolImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        school:
+          type: string
+          format: uri
+        image:
+          type: string
+          format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedSponsor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        logo:
+          type: string
+          format: uri
+        website:
+          type: string
+          format: uri
+          maxLength: 200
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 20
+        address:
+          type: string
+          maxLength: 100
+        photo:
+          type: string
+          format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedSponsorRepresentative:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        sponsor:
+          type: string
+          format: uri
+        role:
+          type: string
+          maxLength: 100
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedStudent:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        student_class:
+          type: string
+          maxLength: 100
+        student_story:
+          type: string
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          format: uri
+        parent_consent:
+          type: string
+          format: uri
+        school:
+          type: string
+          format: uri
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        first_name:
+          type: string
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 30
+        password:
+          type: string
+          writeOnly: true
+        password_confirm:
+          type: string
+          writeOnly: true
+        user_type:
+          $ref: '#/components/schemas/UserTypeEnum'
+        is_active:
+          type: boolean
+        is_staff:
+          type: boolean
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
+    Representative:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        id_number:
+          type: string
+          maxLength: 100
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          format: uri
+        school:
+          type: string
+          format: uri
+      required:
+      - email
+      - first_name
+      - id_number
+      - last_name
+      - phone
+      - pk
+      - school
+    School:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        id_number:
+          type: string
+          maxLength: 100
+        name:
+          type: string
+          maxLength: 100
+        location:
+          type: string
+          maxLength: 100
+        address:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+      required:
+      - address
+      - id_number
+      - location
+      - name
+      - pk
+    SchoolDocument:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        school:
+          type: string
+          format: uri
+        document:
+          type: string
+          format: uri
+        type_of_document:
+          $ref: '#/components/schemas/TypeOfDocumentEnum'
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date_added
+      - document
+      - id
+      - last_modified
+      - school
+    SchoolImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        school:
+          type: string
+          format: uri
+        image:
+          type: string
+          format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date_added
+      - id
+      - image
+      - last_modified
+      - school
+    Sponsor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        logo:
+          type: string
+          format: uri
+        website:
+          type: string
+          format: uri
+          maxLength: 200
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 20
+        address:
+          type: string
+          maxLength: 100
+        photo:
+          type: string
+          format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - address
+      - date_added
+      - email
+      - id
+      - last_modified
+      - name
+      - phone
+    SponsorRepresentative:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        sponsor:
+          type: string
+          format: uri
+        role:
+          type: string
+          maxLength: 100
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date_added
+      - email
+      - first_name
+      - id
+      - last_modified
+      - last_name
+      - phone
+      - role
+      - sponsor
+    StatusEnum:
+      enum:
+      - OPEN
+      - CLOSE
+      type: string
+      description: |-
+        * `OPEN` - open
+        * `CLOSE` - close
+    Student:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        student_class:
+          type: string
+          maxLength: 100
+        student_story:
+          type: string
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          format: uri
+        parent_consent:
+          type: string
+          format: uri
+        school:
+          type: string
+          format: uri
+      required:
+      - first_name
+      - last_name
+      - phone
+      - pk
+      - school
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
+    TypeOfDocumentEnum:
+      enum:
+      - ACCREDITATION_CERTIFICATE
+      - APROOVAL_LETTER
+      type: string
+      description: |-
+        * `ACCREDITATION_CERTIFICATE` - Accreditation Ceritficate
+        * `APROOVAL_LETTER` - Approval Letter
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        first_name:
+          type: string
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 30
+        password:
+          type: string
+          writeOnly: true
+        password_confirm:
+          type: string
+          writeOnly: true
+        user_type:
+          $ref: '#/components/schemas/UserTypeEnum'
+        is_active:
+          type: boolean
+        is_staff:
+          type: boolean
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
+      required:
+      - email
+      - id
+      - password
+      - password_confirm
+    UserTypeEnum:
+      enum:
+      - STAFF
+      - ADMIN
+      - SCHOOL
+      - SPONSOR
+      type: string
+      description: |-
+        * `STAFF` - Staff
+        * `ADMIN` - Admin
+        * `SCHOOL` - School
+        * `SPONSOR` - Sponsor
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

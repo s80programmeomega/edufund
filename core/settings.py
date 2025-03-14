@@ -32,28 +32,37 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # Custom
-    'users',
-    'school',
-    'sponsor',
-    'rest_framework',
-    'rest_framework_simplejwt',
+    "users",
+    "school",
+    "sponsor",
+    "rest_framework",
+    "rest_framework_simplejwt",  # For token authentication
+    "corsheaders",  # For CORS settings
+    "drf_spectacular",  # For API documentation or autoschema generation
+    "drf_spectacular_sidecar",  # required for Django collectstatic discovery
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware", # CORS middleware
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+#  CORS allowed origins
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # React+vite port
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -135,11 +144,22 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # Rest Framework settings
 ## Authentication
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ]
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", # drf-spectacular
+}
+## drf-spectacular
+SPECTACULAR_SETTINGS = {
+    "TITLE": "EduFund",
+    "DESCRIPTION": "EduFund is a crowdfunding platform that helps financially struggling secondary school students in Nigerian (public) schools raise funds for school fees and essential learning materials.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
+    "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
+    "REDOC_DIST": "SIDECAR",
 }
 
 

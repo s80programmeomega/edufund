@@ -1,6 +1,6 @@
 
 from django.db import models
-
+from decimal import Decimal
 
 class School(models.Model):
     id_number = models.CharField(max_length=100, unique=True)

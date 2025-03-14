@@ -14,7 +14,7 @@ class SponsorRepresentativeInline(admin.TabularInline):
 
 @admin.register(Sponsor)
 class SponsorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'phone']
+    list_display = ['name', 'email', 'phone', 'date_added', 'last_modified']
     search_fields = ['name', 'email']
     inlines = [DonationInline,  SponsorRepresentativeInline]
 

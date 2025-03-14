@@ -1,3 +1,8 @@
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import (
@@ -14,9 +19,8 @@ from school.views import (
     SchoolViewSet,
     StudentViewSet,
 )
+from sponsor.views import DonationViewSet, SponsorRepresentativeViewSet, SponsorViewSet
 from users.views import UserViewSet
-
-from sponsor.views import SponsorViewSet, SponsorRepresentativeViewSet, DonationViewSet
 
 router = DefaultRouter()
 
@@ -33,7 +37,11 @@ router.register("school-image", SchoolImageViewSet, basename="school-image")
 
 # sponsor routes
 router.register("sponsor", SponsorViewSet, basename="sponsor")
-router.register("sponsor-representative", SponsorRepresentativeViewSet, basename="sponsor-representative")
+router.register(
+    "sponsor-representative",
+    SponsorRepresentativeViewSet,
+    basename="sponsor-representative",
+)
 router.register("donation", DonationViewSet, basename="donation")
 
 
@@ -44,5 +52,22 @@ jwt_patterns = [
     path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
 ]
 
+
+drf_spectacular_urlpatterns = [
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    # Optional UI:
+    path(
+        "schema/swagger-ui/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "schema/redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
+]
+
+
 # Combine router URLs and JWT URLs
-urlpatterns = router.urls + jwt_patterns
+urlpatterns = router.urls + jwt_patterns + drf_spectacular_urlpatterns

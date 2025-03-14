@@ -2,6 +2,7 @@ from rest_framework import permissions, viewsets
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView, TokenVerifyView)
+from rest_framework import authentication
 from rest_framework.decorators import action
 from django.urls import path
 
@@ -30,24 +31,3 @@ class UserViewSet(ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
 
-# class TokenViewSet(viewsets.ViewSet):
-#     @action(detail=False, methods=['post'])
-#     def token(self, request):
-#         return TokenObtainPairView.as_view()(request)
-
-#     @action(detail=False, methods=['post'])
-#     def refresh(self, request):
-#         return TokenRefreshView.as_view()(request)
-
-#     @action(detail=False, methods=['post'])
-#     def verify(self, request):
-#         return TokenVerifyView.as_view()(request)
-
-#     @action(detail=False, methods=['post'])
-#     def get_urls(self):
-#         urls = [
-#             path('token/', self.get_token, name='token_obtain_pair'),
-#             path('token/refresh/', self.refresh_token, name='token_refresh'),
-#             path('token/verify/', self.verify_token, name='token_verify'),
-#         ]
-#         return urls
