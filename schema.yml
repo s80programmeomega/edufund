@@ -6,6 +6,162 @@ info:
     secondary school students in Nigerian (public) schools raise funds for school
     fees and essential learning materials.
 paths:
+  /api/anonymous-donation/:
+    get:
+      operationId: anonymous_donation_list
+      tags:
+      - anonymous-donation
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnonymousDonation'
+          description: ''
+    post:
+      operationId: anonymous_donation_create
+      tags:
+      - anonymous-donation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnonymousDonation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnonymousDonation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnonymousDonation'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnonymousDonation'
+          description: ''
+  /api/anonymous-donation/{id}/:
+    get:
+      operationId: anonymous_donation_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this anonymous donation.
+        required: true
+      tags:
+      - anonymous-donation
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnonymousDonation'
+          description: ''
+    put:
+      operationId: anonymous_donation_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this anonymous donation.
+        required: true
+      tags:
+      - anonymous-donation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnonymousDonation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnonymousDonation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnonymousDonation'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnonymousDonation'
+          description: ''
+    patch:
+      operationId: anonymous_donation_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this anonymous donation.
+        required: true
+      tags:
+      - anonymous-donation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnonymousDonation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnonymousDonation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnonymousDonation'
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnonymousDonation'
+          description: ''
+    delete:
+      operationId: anonymous_donation_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this anonymous donation.
+        required: true
+      tags:
+      - anonymous-donation
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
   /api/donation/:
     get:
       operationId: donation_list
@@ -45,7 +201,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -104,7 +259,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -138,7 +292,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -161,7 +314,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -204,7 +356,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -263,7 +414,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -297,7 +447,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -320,7 +469,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -363,7 +511,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -422,7 +569,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -456,7 +602,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -479,7 +624,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -522,7 +666,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -569,7 +712,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -628,7 +770,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -662,7 +803,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -685,7 +825,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -728,7 +867,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -787,7 +925,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -821,7 +958,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -844,7 +980,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -899,7 +1034,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -933,7 +1067,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -956,7 +1089,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -999,7 +1131,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -1046,7 +1177,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -1105,7 +1235,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -1139,7 +1268,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -1162,7 +1290,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -1217,7 +1344,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -1251,7 +1377,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -1274,7 +1399,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -1317,7 +1441,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -1376,7 +1499,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -1410,7 +1532,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -1433,7 +1554,6 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -1673,6 +1793,32 @@ paths:
           description: No response body
 components:
   schemas:
+    AnonymousDonation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        funding_campaign:
+          type: integer
+      required:
+      - amount
+      - date_added
+      - funding_campaign
+      - id
+      - last_modified
     Donation:
       type: object
       properties:
@@ -1752,6 +1898,26 @@ components:
       - pk
       - schools
       - sponsors
+    PatchedAnonymousDonation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        funding_campaign:
+          type: integer
     PatchedDonation:
       type: object
       properties:
@@ -2386,16 +2552,16 @@ components:
       - password_confirm
     UserTypeEnum:
       enum:
-      - STAFF
       - ADMIN
       - SCHOOL
       - SPONSOR
+      - GUEST
       type: string
       description: |-
-        * `STAFF` - Staff
         * `ADMIN` - Admin
         * `SCHOOL` - School
         * `SPONSOR` - Sponsor
+        * `GUEST` - Guest
   securitySchemes:
     basicAuth:
       type: http

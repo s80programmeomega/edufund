@@ -1,13 +1,14 @@
-from enum import Enum
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AnonymousUser
+from django.contrib.auth.models import (AbstractBaseUser, AnonymousUser,
+                                        BaseUserManager, PermissionsMixin)
 from django.db import models
 
 
 class UserType(models.TextChoices):
-    STAFF = "STAFF", 'Staff'
-    ADMIN = 'ADMIN', 'Admin'
+    GUEST = "GUEST", "Guest"
     SCHOOL = 'SCHOOL', 'School'
     SPONSOR = 'SPONSOR', 'Sponsor'
+    ADMIN = 'ADMIN', 'Admin'
 
 
 class CustomUserManager(BaseUserManager):
@@ -43,7 +44,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     user_type = models.CharField(
         max_length=20,
         choices=UserType.choices,
-        default=UserType.STAFF
+        default=UserType.GUEST
     )
 
     email = models.EmailField(unique=True)
@@ -59,12 +60,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name', 'user_type']
 
     def save(self, *args, **kwargs):
-        # If user is a superuser, set user_type to ADMIN
-        if self.is_superuser:
-            self.user_type = UserType.ADMIN
-            self.is_staff = True  # Ensure staff status for admin access
-        elif self.user_type not in {UserType.SCHOOL, UserType.SPONSOR}:
-            self.user_type = UserType.STAFF
+        # Set the admin status according to the user type
+        if self.user_type == UserType.ADMIN:
+            self.is_superuser = True
+            self.is_staff = True
+        else:
+            self.is_superuser = False
+            self.is_staff = False
 
         super().save(*args, **kwargs)
 
@@ -74,3 +76,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class CustomAnonymousUser(AnonymousUser):
+    def __init__(self):
+        super().__init__()
+        self._user_type = "Guest"
+
+    @property
+    def user_type(self):
+        return self._user_type
+
+    @user_type.setter
+    def user_type(self, value):
+        self._user_type = value

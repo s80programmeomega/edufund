@@ -19,7 +19,7 @@ from school.views import (
     SchoolViewSet,
     StudentViewSet,
 )
-from sponsor.views import DonationViewSet, SponsorRepresentativeViewSet, SponsorViewSet
+from sponsor.views import AnonymousDonationViewSet, DonationViewSet, SponsorRepresentativeViewSet, SponsorViewSet
 from users.views import UserViewSet
 
 router = DefaultRouter()
@@ -43,6 +43,7 @@ router.register(
     basename="sponsor-representative",
 )
 router.register("donation", DonationViewSet, basename="donation")
+router.register("anonymous-donation", AnonymousDonationViewSet, basename="anonymous-donation")
 
 
 # Create a list of additional URL patterns for JWT

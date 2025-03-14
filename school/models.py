@@ -2,6 +2,7 @@
 from django.db import models
 from decimal import Decimal
 
+
 class School(models.Model):
     id_number = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=100)
@@ -119,7 +120,10 @@ class FundingCampaign(models.Model):
     def funding_progression(self):
         progression = (self.donations.all().aggregate(models.Sum('amount'))[
                        'amount__sum'] / self.amount)*100 if self.donations.all() else 0
-        return f"{round(progression, 2)} %"
+        anonymous_progression = (self.anonymous_donations.all().aggregate(models.Sum('amount'))[
+            'amount__sum'] / self.amount)*100 if self.anonymous_donations.all() else 0
+        total_progression = progression + anonymous_progression
+        return f"{round(total_progression, 2)} %"
 
     def __str__(self):
         return self.name

@@ -14,7 +14,7 @@ from .models import (
 
 
 class SchoolSerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = School
         fields = [
@@ -82,7 +82,7 @@ class FundingCampaignSerializer(serializers.ModelSerializer):
 
     funding_progression = serializers.SerializerMethodField(method_name="get_funding_progression" ,read_only=True)
 
-    def get_funding_progression(self, obj: FundingCampaign):
+    def get_funding_progression(self, obj: FundingCampaign)->str:
         return obj.funding_progression
 
     class Meta:

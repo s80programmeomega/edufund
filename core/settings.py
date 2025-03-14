@@ -52,12 +52,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware", # CORS middleware
+    "corsheaders.middleware.CorsMiddleware",  # CORS middleware
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # custom
+    "users.middleware.AnonymousUserTypeMiddleware",
 ]
 
 #  CORS allowed origins
@@ -78,6 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # custom
+                'users.context_preprocessors.set_anonymous_user_type'
             ],
         },
     },
@@ -142,16 +146,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # Rest Framework settings
-## Authentication
+# Authentication
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", # drf-spectacular
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",  # drf-spectacular
 }
-## drf-spectacular
+# drf-spectacular
 SPECTACULAR_SETTINGS = {
     "TITLE": "EduFund",
     "DESCRIPTION": "EduFund is a crowdfunding platform that helps financially struggling secondary school students in Nigerian (public) schools raise funds for school fees and essential learning materials.",

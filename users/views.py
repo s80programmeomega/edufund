@@ -23,11 +23,10 @@ class UserViewSet(ModelViewSet):
         Returns:
             permissions: a list of permissions.
         """
-        if self.action in {'list', 'retrieve'}:
+        if self.action == "create" and self.request.user.is_anonymous:
+            self.permission_classes = [permissions.AllowAny]
+        elif self.action in ["list", "update", "partial_update", "destroy"]:
+            self.permission_classes = [permissions.IsAdminUser,]
+        elif self.action == "retrieve":
             self.permission_classes = [permissions.IsAuthenticated]
-        else:
-            self.permission_classes = [
-                permissions.IsAuthenticated, permissions.IsAdminUser,]
         return [permission() for permission in self.permission_classes]
-
-

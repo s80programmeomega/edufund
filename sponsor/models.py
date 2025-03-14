@@ -50,3 +50,14 @@ class Donation(models.Model):
 
     def __str__(self):
         return self.sponsor.name
+
+
+class AnonymousDonation(models.Model):
+    funding_campaign = models.ForeignKey(
+        to=FundingCampaign, on_delete=models.PROTECT, related_name="anonymous_donations")
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date_added = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Anonymous - {self.amount}"
