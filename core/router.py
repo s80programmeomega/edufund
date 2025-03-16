@@ -62,11 +62,12 @@ drf_spectacular_urlpatterns = [
         name="redoc",
     ),
 ]
-from users.views import LoginView
-# restframework auth views
+from users.views import LoginView, LogoutView
 auth_urlpatterns = [
-    path('auth/', include('rest_framework.urls')),
     path('login/', view=LoginView.as_view(), name="login"),
+    path('logout/', view=LogoutView.as_view(), name="logout"),
+    # restframework auth views
+    path('auth/', include('rest_framework.urls')),
 ]
 
 # Combine router URLs and JWT URLs

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "sponsor",
     "rest_framework",
     "rest_framework_simplejwt",  # For token authentication
+    'rest_framework_simplejwt.token_blacklist',
     "corsheaders",  # For CORS settings
     "drf_spectacular",  # For API documentation or autoschema generation
     "drf_spectacular_sidecar",  # required for Django collectstatic discovery
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # CORS middleware
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    # "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -154,7 +155,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication", # Simple-jwt
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",  # drf-spectacular
     #pagination

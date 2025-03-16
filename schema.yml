@@ -27,7 +27,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -55,7 +54,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -79,7 +77,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -114,7 +111,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -147,7 +143,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -169,7 +164,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -194,7 +188,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -222,7 +215,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -245,7 +237,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -280,7 +271,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -313,7 +303,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -335,7 +324,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -360,7 +348,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -388,7 +375,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -411,7 +397,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -446,7 +431,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -479,7 +463,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -501,24 +484,66 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
   /api/login/:
     post:
       operationId: login_create
-      description: Handle user login
+      description: Handle  user login
       tags:
       - login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/logout/:
+    post:
+      operationId: logout_create
+      description: Handle user logout
+      tags:
+      - logout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Logout'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Logout'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Logout'
+        required: true
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Logout'
+          description: ''
   /api/representative/:
     get:
       operationId: representative_list
@@ -540,7 +565,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -568,7 +592,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -591,7 +614,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -626,7 +648,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -659,7 +680,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -681,7 +701,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -706,7 +725,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -734,7 +752,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -763,7 +780,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -791,7 +807,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -814,7 +829,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -849,7 +863,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -882,7 +895,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -904,7 +916,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -929,7 +940,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -957,7 +967,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -980,7 +989,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1015,7 +1023,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1048,7 +1055,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1070,7 +1076,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1089,7 +1094,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1124,7 +1128,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1157,7 +1160,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1179,7 +1181,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1204,7 +1205,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1232,7 +1232,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1261,7 +1260,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1289,7 +1287,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1312,7 +1309,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1347,7 +1343,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1380,7 +1375,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1402,7 +1396,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1421,7 +1414,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1456,7 +1448,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1489,7 +1480,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1511,7 +1501,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1536,7 +1525,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1564,7 +1552,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1587,7 +1574,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1622,7 +1608,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1655,7 +1640,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1677,7 +1661,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1783,7 +1766,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1810,7 +1792,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -1834,7 +1815,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1868,7 +1848,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1901,7 +1880,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1923,7 +1901,6 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
-      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1939,6 +1916,10 @@ components:
           type: string
           format: decimal
           pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        email:
+          type: string
+          format: email
+          maxLength: 254
         date_added:
           type: string
           format: date-time
@@ -1952,6 +1933,7 @@ components:
       required:
       - amount
       - date_added
+      - email
       - funding_campaign
       - id
       - last_modified
@@ -2034,6 +2016,23 @@ components:
       - pk
       - schools
       - sponsors
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
+    Logout:
+      type: object
+      properties:
+        refresh:
+          type: string
+      required:
+      - refresh
     PaginatedAnonymousDonationList:
       type: object
       required:
@@ -2297,6 +2296,10 @@ components:
           type: string
           format: decimal
           pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        email:
+          type: string
+          format: email
+          maxLength: 254
         date_added:
           type: string
           format: date-time
@@ -2937,10 +2940,6 @@ components:
     basicAuth:
       type: http
       scheme: basic
-    cookieAuth:
-      type: apiKey
-      in: cookie
-      name: sessionid
     jwtAuth:
       type: http
       scheme: bearer

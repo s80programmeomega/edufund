@@ -1,18 +1,22 @@
-from rest_framework import status
+from django.contrib.auth import authenticate, login, logout
+from django.urls import path
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import authentication, permissions, status, viewsets
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet, generics
+from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import permissions, viewsets
-from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView, TokenVerifyView)
-from rest_framework import authentication
-from rest_framework.decorators import action
-from django.urls import path
+
+import users
 
 from .models import CustomUser as User
-from .serializers import UserSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.contrib.auth import authenticate
+from .serializers import LoginSerializer, LogoutSerializer, UserSerializer
 
 
 class UserViewSet(ModelViewSet):
@@ -37,7 +41,6 @@ class UserViewSet(ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
 
-
 def get_tokens_for_user(user):
     """Generate user token"""
     refresh = RefreshToken.for_user(user)
@@ -47,16 +50,18 @@ def get_tokens_for_user(user):
     }
 
 
-class LoginView(APIView):
+@method_decorator(csrf_exempt, name='dispatch')
+class LoginView(generics.GenericAPIView):
     """Handle  user login"""
 
+    serializer_class = LoginSerializer
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
         email = request.data.get('username')
         password = request.data.get('password')
 
-        user = authenticate(email=email, password=password)
+        user = authenticate(request, email=email, password=password)
 
         if user:
             tokens = get_tokens_for_user(user)
@@ -69,3 +74,28 @@ class LoginView(APIView):
         return Response({
             'error': 'Invalid Credentials'
         }, status=status.HTTP_401_UNAUTHORIZED)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class LogoutView(generics.GenericAPIView):
+    """Handle user logout"""
+
+    serializer_class = LogoutSerializer
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            refresh_token = request.data['refresh']
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except TokenError:
+            return Response(
+                {'error': 'Invalid or expired token'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        except KeyError:
+            return Response(
+                {'error': 'Refresh token not provided'},
+                status=status.HTTP_400_BAD_REQUEST
+            )

@@ -5,8 +5,10 @@ from .models import CustomUser as User
 
 class UserSerializer(serializers.ModelSerializer):
 
-    password = serializers.CharField(write_only=True, style={'input_type': 'password'})
-    password_confirm = serializers.CharField(write_only=True, style={'input_type': 'password'})
+    password = serializers.CharField(
+        write_only=True, style={'input_type': 'password'})
+    password_confirm = serializers.CharField(
+        write_only=True, style={'input_type': 'password'})
 
     class Meta:
         model = User
@@ -43,3 +45,12 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.CharField()
+    password = serializers.CharField(style={'input_type': 'password'})
+
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
