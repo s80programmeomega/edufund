@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.permissions import (IsAdminUser, IsAuthenticated,
-                                        IsAuthenticatedOrReadOnly)
+                                        IsAuthenticatedOrReadOnly, AllowAny)
 
 from school.models import (FundingCampaign, Representative, School,
                            SchoolDocument, SchoolImage, Student)
@@ -22,7 +22,7 @@ class SchoolViewSet(viewsets.ModelViewSet):
         if self.action in ["create", "update", "partial_update", "destroy"]:
             self.permission_classes = [IsSchool]
         else:
-            self.permission_classes = [IsAuthenticatedOrReadOnly]
+            self.permission_classes = [AllowAny]
         return super().get_permissions()
 
 
@@ -36,7 +36,7 @@ class RepresentativeViewSet(viewsets.ModelViewSet):
         if self.action in ["create", "update", "partial_update", "destroy"]:
             self.permission_classes = [IsSchool]
         else:
-            self.permission_classes = [IsAuthenticatedOrReadOnly]
+            self.permission_classes = [AllowAny]
         return super().get_permissions()
 
 

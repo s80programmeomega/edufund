@@ -9,6 +9,19 @@ paths:
   /api/anonymous-donation/:
     get:
       operationId: anonymous_donation_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - anonymous-donation
       security:
@@ -21,9 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AnonymousDonation'
+                $ref: '#/components/schemas/PaginatedAnonymousDonationList'
           description: ''
     post:
       operationId: anonymous_donation_create
@@ -165,6 +176,19 @@ paths:
   /api/donation/:
     get:
       operationId: donation_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - donation
       security:
@@ -177,9 +201,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Donation'
+                $ref: '#/components/schemas/PaginatedDonationList'
           description: ''
     post:
       operationId: donation_create
@@ -320,6 +342,19 @@ paths:
   /api/funding-campaign/:
     get:
       operationId: funding_campaign_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - funding-campaign
       security:
@@ -332,9 +367,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FundingCampaign'
+                $ref: '#/components/schemas/PaginatedFundingCampaignList'
           description: ''
     post:
       operationId: funding_campaign_create
@@ -472,9 +505,36 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/login/:
+    post:
+      operationId: login_create
+      description: Handle user login
+      tags:
+      - login
+      security:
+      - basicAuth: []
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
   /api/representative/:
     get:
       operationId: representative_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - representative
       security:
@@ -487,9 +547,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Representative'
+                $ref: '#/components/schemas/PaginatedRepresentativeList'
           description: ''
     post:
       operationId: representative_create
@@ -630,6 +688,19 @@ paths:
   /api/school/:
     get:
       operationId: school_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - school
       security:
@@ -642,9 +713,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/School'
+                $ref: '#/components/schemas/PaginatedSchoolList'
           description: ''
     post:
       operationId: school_create
@@ -676,6 +745,19 @@ paths:
   /api/school-document/:
     get:
       operationId: school_document_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - school-document
       security:
@@ -688,9 +770,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SchoolDocument'
+                $ref: '#/components/schemas/PaginatedSchoolDocumentList'
           description: ''
     post:
       operationId: school_document_create
@@ -831,6 +911,19 @@ paths:
   /api/school-image/:
     get:
       operationId: school_image_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - school-image
       security:
@@ -843,9 +936,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SchoolImage'
+                $ref: '#/components/schemas/PaginatedSchoolImageList'
           description: ''
     post:
       operationId: school_image_create
@@ -1095,6 +1186,19 @@ paths:
   /api/sponsor/:
     get:
       operationId: sponsor_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - sponsor
       security:
@@ -1107,9 +1211,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Sponsor'
+                $ref: '#/components/schemas/PaginatedSponsorList'
           description: ''
     post:
       operationId: sponsor_create
@@ -1141,6 +1243,19 @@ paths:
   /api/sponsor-representative/:
     get:
       operationId: sponsor_representative_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - sponsor-representative
       security:
@@ -1153,9 +1268,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SponsorRepresentative'
+                $ref: '#/components/schemas/PaginatedSponsorRepresentativeList'
           description: ''
     post:
       operationId: sponsor_representative_create
@@ -1405,6 +1518,19 @@ paths:
   /api/student/:
     get:
       operationId: student_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - student
       security:
@@ -1417,9 +1543,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Student'
+                $ref: '#/components/schemas/PaginatedStudentList'
           description: ''
     post:
       operationId: student_create
@@ -1641,6 +1765,19 @@ paths:
   /api/users/:
     get:
       operationId: users_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
       tags:
       - users
       security:
@@ -1652,9 +1789,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/PaginatedUserList'
           description: ''
     post:
       operationId: users_create
@@ -1676,6 +1811,7 @@ paths:
       - basicAuth: []
       - jwtAuth: []
       - cookieAuth: []
+      - {}
       responses:
         '201':
           content:
@@ -1898,6 +2034,259 @@ components:
       - pk
       - schools
       - sponsors
+    PaginatedAnonymousDonationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnonymousDonation'
+    PaginatedDonationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Donation'
+    PaginatedFundingCampaignList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingCampaign'
+    PaginatedRepresentativeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Representative'
+    PaginatedSchoolDocumentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SchoolDocument'
+    PaginatedSchoolImageList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SchoolImage'
+    PaginatedSchoolList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/School'
+    PaginatedSponsorList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sponsor'
+    PaginatedSponsorRepresentativeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SponsorRepresentative'
+    PaginatedStudentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Student'
+    PaginatedUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
     PatchedAnonymousDonation:
       type: object
       properties:
@@ -2202,15 +2591,6 @@ components:
           writeOnly: true
         user_type:
           $ref: '#/components/schemas/UserTypeEnum'
-        is_active:
-          type: boolean
-        is_staff:
-          type: boolean
-        is_superuser:
-          type: boolean
-          title: Superuser status
-          description: Designates that this user has all permissions without explicitly
-            assigning them.
     Representative:
       type: object
       properties:
@@ -2536,15 +2916,6 @@ components:
           writeOnly: true
         user_type:
           $ref: '#/components/schemas/UserTypeEnum'
-        is_active:
-          type: boolean
-        is_staff:
-          type: boolean
-        is_superuser:
-          type: boolean
-          title: Superuser status
-          description: Designates that this user has all permissions without explicitly
-            assigning them.
       required:
       - email
       - id
@@ -2552,16 +2923,16 @@ components:
       - password_confirm
     UserTypeEnum:
       enum:
-      - ADMIN
+      - GUEST
       - SCHOOL
       - SPONSOR
-      - GUEST
+      - ADMIN
       type: string
       description: |-
-        * `ADMIN` - Admin
+        * `GUEST` - Guest
         * `SCHOOL` - School
         * `SPONSOR` - Sponsor
-        * `GUEST` - Guest
+        * `ADMIN` - Admin
   securitySchemes:
     basicAuth:
       type: http

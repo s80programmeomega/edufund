@@ -1,4 +1,3 @@
-from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth.models import (AbstractBaseUser, AnonymousUser,
                                         BaseUserManager, PermissionsMixin)
 from django.db import models

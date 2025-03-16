@@ -1,25 +1,15 @@
-from drf_spectacular.views import (
-    SpectacularAPIView,
-    SpectacularRedocView,
-    SpectacularSwaggerView,
-)
 from django.urls import include, path
+from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
+                                   SpectacularSwaggerView)
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-    TokenVerifyView,
-)
+from rest_framework_simplejwt.views import (TokenObtainPairView,
+                                            TokenRefreshView, TokenVerifyView)
 
-from school.views import (
-    FundingCampaignViewSet,
-    RepresentativeViewSet,
-    SchoolDocumentViewSet,
-    SchoolImageViewSet,
-    SchoolViewSet,
-    StudentViewSet,
-)
-from sponsor.views import AnonymousDonationViewSet, DonationViewSet, SponsorRepresentativeViewSet, SponsorViewSet
+from school.views import (FundingCampaignViewSet, RepresentativeViewSet,
+                          SchoolDocumentViewSet, SchoolImageViewSet,
+                          SchoolViewSet, StudentViewSet)
+from sponsor.views import (AnonymousDonationViewSet, DonationViewSet,
+                           SponsorRepresentativeViewSet, SponsorViewSet)
 from users.views import UserViewSet
 
 router = DefaultRouter()
@@ -29,10 +19,13 @@ router.register("users", UserViewSet, basename="users")
 
 # school routes
 router.register("school", SchoolViewSet, basename="school")
-router.register("representative", RepresentativeViewSet, basename="representative")
+router.register("representative", RepresentativeViewSet,
+                basename="representative")
 router.register("student", StudentViewSet, basename="student")
-router.register("funding-campaign", FundingCampaignViewSet, basename="funding-campaign")
-router.register("school-document", SchoolDocumentViewSet, basename="school-document")
+router.register("funding-campaign", FundingCampaignViewSet,
+                basename="funding-campaign")
+router.register("school-document", SchoolDocumentViewSet,
+                basename="school-document")
 router.register("school-image", SchoolImageViewSet, basename="school-image")
 
 # sponsor routes
@@ -43,7 +36,8 @@ router.register(
     basename="sponsor-representative",
 )
 router.register("donation", DonationViewSet, basename="donation")
-router.register("anonymous-donation", AnonymousDonationViewSet, basename="anonymous-donation")
+router.register("anonymous-donation", AnonymousDonationViewSet,
+                basename="anonymous-donation")
 
 
 # Create a list of additional URL patterns for JWT
@@ -68,7 +62,12 @@ drf_spectacular_urlpatterns = [
         name="redoc",
     ),
 ]
-
+from users.views import LoginView
+# restframework auth views
+auth_urlpatterns = [
+    path('auth/', include('rest_framework.urls')),
+    path('login/', view=LoginView.as_view(), name="login"),
+]
 
 # Combine router URLs and JWT URLs
-urlpatterns = router.urls + jwt_patterns + drf_spectacular_urlpatterns
+urlpatterns = router.urls + jwt_patterns + drf_spectacular_urlpatterns + auth_urlpatterns

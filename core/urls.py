@@ -19,13 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-from  .router import urlpatterns as api_urlpatterns
+from .router import urlpatterns as api_urlpatterns
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(api_urlpatterns)),
-    # restframework auth views
-    path('api-auth/', include('rest_framework.urls')),
 ]
 
 

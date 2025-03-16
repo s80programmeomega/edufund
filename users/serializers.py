@@ -18,9 +18,6 @@ class UserSerializer(serializers.ModelSerializer):
             'password',
             'password_confirm',
             'user_type',
-            'is_active',
-            'is_staff',
-            'is_superuser'
         ]
 
     def create(self, validated_data):
