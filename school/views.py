@@ -12,7 +12,12 @@ from school.serializers import (FundingCampaignSerializer,
                                 StudentSerializer)
 
 
-class SchoolViewSet(viewsets.ModelViewSet):
+class BaseModelViewSet(viewsets.ModelViewSet):
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class SchoolViewSet(BaseModelViewSet):
     model = School
     lookup_field = "pk"
     queryset = School.objects.all()
@@ -26,7 +31,7 @@ class SchoolViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
 
-class RepresentativeViewSet(viewsets.ModelViewSet):
+class RepresentativeViewSet(BaseModelViewSet):
     model = Representative
     lookup_field = "pk"
     queryset = Representative.objects.all()
@@ -40,7 +45,7 @@ class RepresentativeViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
 
-class StudentViewSet(viewsets.ModelViewSet):
+class StudentViewSet(BaseModelViewSet):
     model = Student
     lookup_field = "pk"
     queryset = Student.objects.all()
@@ -54,7 +59,7 @@ class StudentViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
 
-class FundingCampaignViewSet(viewsets.ModelViewSet):
+class FundingCampaignViewSet(BaseModelViewSet):
     model = FundingCampaign
     lookup_field = "pk"
     queryset = FundingCampaign.objects.all()
@@ -68,7 +73,7 @@ class FundingCampaignViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
 
-class SchoolDocumentViewSet(viewsets.ModelViewSet):
+class SchoolDocumentViewSet(BaseModelViewSet):
     model = SchoolDocument
     lookup_field = "pk"
     queryset = SchoolDocument.objects.all()
@@ -82,7 +87,7 @@ class SchoolDocumentViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
 
-class SchoolImageViewSet(viewsets.ModelViewSet):
+class SchoolImageViewSet(BaseModelViewSet):
     model = SchoolImage
     lookup_field = "pk"
     queryset = SchoolImage.objects.all()

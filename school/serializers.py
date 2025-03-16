@@ -25,6 +25,7 @@ class SchoolSerializer(serializers.ModelSerializer):
             "address",
             "description",
         ]
+        read_only_fields = ["created_by"]
 
 
 class RepresentativeSerializer(serializers.ModelSerializer):
@@ -45,6 +46,7 @@ class RepresentativeSerializer(serializers.ModelSerializer):
             "photo",
             "school",
         ]
+        read_only_fields = ["created_by"]
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -66,6 +68,7 @@ class StudentSerializer(serializers.ModelSerializer):
             "parent_consent",
             "school",
         ]
+        read_only_fields = ["created_by"]
 
 
 class FundingCampaignSerializer(serializers.ModelSerializer):
@@ -101,7 +104,7 @@ class FundingCampaignSerializer(serializers.ModelSerializer):
             "end_date",
         ]
         read_only_fields = [
-            "funding_progression",
+            "funding_progression", "created_by"
         ]
 
 class SchoolDocumentSerializer(serializers.ModelSerializer):
@@ -113,7 +116,7 @@ class SchoolDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = SchoolDocument
         fields = "__all__"
-        read_only_fields = ["date_added", "last_modified"]
+        read_only_fields = ["date_added", "last_modified", "created_by"]
 
 
 class SchoolImageSerializer(serializers.ModelSerializer):
@@ -125,4 +128,4 @@ class SchoolImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = SchoolImage
         fields = "__all__"
-        read_only_fields = ["date_added", "last_modified"]
+        read_only_fields = ["date_added", "last_modified", "created_by"]

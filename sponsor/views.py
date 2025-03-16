@@ -8,7 +8,12 @@ from .serializers import (AnonymousDonationSerializer, DonationSerializer, Spons
                           SponsorSerializer)
 
 
-class SponsorViewSet(viewsets.ModelViewSet):
+class BaseModelViewSet(viewsets.ModelViewSet):
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class SponsorViewSet(BaseModelViewSet):
     model = Sponsor
     lookup_field = "pk"
     queryset = Sponsor.objects.all()
@@ -22,7 +27,7 @@ class SponsorViewSet(viewsets.ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
 
-class SponsorRepresentativeViewSet(viewsets.ModelViewSet):
+class SponsorRepresentativeViewSet(BaseModelViewSet):
     model = SponsorRepresentative
     lookup_field = "pk"
     queryset = SponsorRepresentative.objects.all()
@@ -36,7 +41,7 @@ class SponsorRepresentativeViewSet(viewsets.ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
 
-class DonationViewSet(viewsets.ModelViewSet):
+class DonationViewSet(BaseModelViewSet):
     model = Donation
     lookup_field = "pk"
     queryset = Donation.objects.all()
@@ -50,7 +55,7 @@ class DonationViewSet(viewsets.ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
 
-class AnonymousDonationViewSet(viewsets.ModelViewSet):
+class AnonymousDonationViewSet(BaseModelViewSet):
     model = AnonymousDonation
     lookup_field = "pk"
     queryset = AnonymousDonation.objects.all()

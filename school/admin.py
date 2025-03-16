@@ -32,6 +32,7 @@ class SchoolAdmin(admin.ModelAdmin):
         SchoolDocumentInline,
         SchoolImageInline,
     ]
+    readonly_fields = ["created_by"]
 
 
 @admin.register(FundingCampaign)
@@ -40,6 +41,7 @@ class FundingCampaignAdmin(admin.ModelAdmin):
                     'funding_progression', 'start_date', 'end_date']
     # Makes M2M fields easier to manage
     filter_horizontal = ['schools', 'sponsors']
+    readonly_fields = ["created_by"]
 
 
 @admin.register(Student)
@@ -47,6 +49,7 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'school']
     search_fields = ['first_name', 'last_name']
     list_filter = ['school']
+    readonly_fields = ["created_by"]
 
 
 @admin.register(Representative)
@@ -54,3 +57,4 @@ class RepresentativeAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'email', 'school']
     search_fields = ['first_name', 'last_name', 'email']
     list_filter = ['school']
+    readonly_fields = ["created_by"]
