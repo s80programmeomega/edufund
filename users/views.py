@@ -1,19 +1,12 @@
-from django.contrib.auth import authenticate, login, logout
-from django.urls import path
+from django.contrib.auth import authenticate
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import authentication, permissions, status, viewsets
-from rest_framework.decorators import action
+from rest_framework import permissions, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, generics
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.views import (TokenObtainPairView,
-                                            TokenRefreshView, TokenVerifyView)
-
-import users
 
 from .models import CustomUser as User
 from .serializers import LoginSerializer, LogoutSerializer, UserSerializer

@@ -1,11 +1,15 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth import get_user_model
 from school.models import FundingCampaign
+from users.models import CustomAnonymousUser
 
 
 class BaseModel(models.Model):
+    user = get_user_model()
+
     created_by = models.ForeignKey(
-        get_user_model(),
+        user,
         on_delete=models.CASCADE,
     )
     date_added = models.DateTimeField(auto_now_add=True)
@@ -70,6 +74,11 @@ class AnonymousDonation(BaseModel):
         to=FundingCampaign, on_delete=models.PROTECT, related_name="anonymous_donations", null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     email = models.EmailField()
+
+    created_by = models.CharField(max_length=20, blank=True, default="Anonymous User", editable=False)
+
+    date_added = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Anonymous - {self.amount}"

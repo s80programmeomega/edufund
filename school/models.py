@@ -27,12 +27,6 @@ class School(BaseModel):
     address = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
-    # created_by = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, related_name="schools",  blank=True, null=True)
-
-    # date_added = models.DateTimeField(auto_now_add=True)
-    # last_modified = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return self.name
 
@@ -47,12 +41,6 @@ class Representative(BaseModel):
         upload_to="images/school/representative/", blank=True)
     school = models.ForeignKey(
         "School", on_delete=models.CASCADE, related_name="representatives")
-
-    # created_by = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, related_name="school_representatives",  blank=True, null=True)
-
-    # date_added = models.DateTimeField(auto_now_add=True)
-    # last_modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Schools Representative"
@@ -76,12 +64,6 @@ class Student(BaseModel):
     school = models.ForeignKey(
         "School", on_delete=models.CASCADE, related_name="students")
 
-    # created_by = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, related_name="students",  blank=True, null=True)
-
-    # date_added = models.DateTimeField(auto_now_add=True)
-    # last_modified = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return self.email
 
@@ -98,12 +80,6 @@ class SchoolDocument(BaseModel):
     type_of_document = models.CharField(
         max_length=100, choices=DocumentType.choices, default=DocumentType.ACCREDITATION_CERTIFICATE)
 
-    # created_by = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, related_name="school_documents",  blank=True, null=True)
-
-    # date_added = models.DateTimeField(auto_now_add=True)
-    # last_modified = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return self.school.name
 
@@ -113,12 +89,6 @@ class SchoolImage(BaseModel):
     school = models.ForeignKey(
         "School", on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to='images/school/')
-
-    # created_by = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, related_name="school_images",  blank=True, null=True)
-
-    # date_added = models.DateTimeField(auto_now_add=True)
-    # last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.school.name
@@ -143,14 +113,8 @@ class FundingCampaign(BaseModel):
     status = models.CharField(
         max_length=100, choices=FundingSatus.choices, default=FundingSatus.OPEN)
 
-    # created_by = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, related_name="funding_campaigns",  blank=True, null=True)
-
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
-
-    # date_added = models.DateTimeField(auto_now_add=True)
-    # last_modified = models.DateTimeField(auto_now=True)
 
     @property
     def funding_progression(self):
