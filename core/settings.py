@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bf+v7zb!8#r3*je7^m5sns&uxwzqkl!1bgo$2w&ag3jsiv4yer'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://edufund-1ved.onrender.com',]
 
 
 # Application definition
@@ -73,7 +73,6 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # React+vite port
     "https://edufund-frontend.vercel.app",
-    'https://edufund-1ved.onrender.com',
 ]
 
 ROOT_URLCONF = 'core.urls'
