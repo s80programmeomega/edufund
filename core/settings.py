@@ -72,7 +72,8 @@ MIDDLEWARE = [
 #  CORS allowed origins
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # React+vite port
-    "https://edufund-frontend.vercel.app"
+    "https://edufund-frontend.vercel.app",
+    'edufund-1ved.onrender.com',
 ]
 
 ROOT_URLCONF = 'core.urls'
