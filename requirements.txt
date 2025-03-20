@@ -5,3 +5,9 @@ pillow
 django-cors-headers
 drf-spectacular
 drf-spectacular[sidecar]
+psycopg2-binary
+dj-database-url
+whitenoise[brotli]
+gunicorn
+uvicorn
+
