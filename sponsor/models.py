@@ -75,7 +75,7 @@ class AnonymousDonation(BaseModel):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     email = models.EmailField()
 
-    created_by = models.CharField(max_length=20, blank=True, default="Anonymous User", editable=False)
+    created_by = models.CharField(max_length=200, blank=True, default="Anonymous User", editable=False)
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
