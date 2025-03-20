@@ -108,7 +108,7 @@ class FundingCampaign(BaseModel):
     schools = models.ManyToManyField(
         to="School", related_name="funding_campaigns", blank=True,)
     sponsors = models.ManyToManyField(
-        to="sponsor.Sponsor", related_name="funding_campaigns", blank=True)
+        to="sponsor.Sponsor", related_name="funding_campaigns", blank=True, null=True)
 
     status = models.CharField(
         max_length=100, choices=FundingSatus.choices, default=FundingSatus.OPEN)
