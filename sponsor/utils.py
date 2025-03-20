@@ -36,7 +36,7 @@ def send_donation_notification(donation: Union[Donation, AnonymousDonation]):
         sponsor_representatives_email.append(recipient_email)
         recipient_email_list = sponsor_representatives_email
     else:
-        recipient_email_list = list(donation.email)
+        recipient_email_list = [donation.email]
 
     # Sponsor notification
     send_mail(
