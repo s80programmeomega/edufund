@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-bf+v7zb!8#r3*je7^m5sns&uxwzqkl!1bgo$2w&ag3jsiv4yer
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://edufund-1ved.onrender.com',]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
