@@ -8,7 +8,7 @@ def send_donation_notification(donation: Union[Donation, AnonymousDonation]):
     """
     Send email notifications about new donations
     """
-    sponsor = donation.sponsor.name if hasattr(
+    sponsor = donation.sponsor.name, donation.sponsor.email if hasattr(
         donation, 'sponsor') else f'Anonymous with email: {donation.email}'
 
     subject = 'New Donation Received'
@@ -24,15 +24,24 @@ def send_donation_notification(donation: Union[Donation, AnonymousDonation]):
     Thank you for your support
     '''
 
-    recipient_email = donation.sponsor.email if hasattr(
-        donation, 'sponsor') else donation.email
+    recipient_email_list = []
+
+    if isinstance(donation, Donation):
+        recipient_email = donation.sponsor.email
+        sponsor_representatives_email = [
+            representative.email for representative in donation.sponsor.representative.all()]
+
+        sponsor_representatives_email.append(recipient_email)
+        recipient_email_list = sponsor_representatives_email
+    else:
+        recipient_email_list = list(donation.email)
 
     # Sponsor notification
     send_mail(
         subject=subject,
         message=message,
         from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[recipient_email],
+        recipient_list=recipient_email_list,
         fail_silently=False,
     )
 
