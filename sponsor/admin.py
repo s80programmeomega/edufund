@@ -15,12 +15,14 @@ class BaseAdmin(admin.ModelAdmin):
 
 class DonationInline(admin.TabularInline):
     model = Donation
+    fk_name = "sponsor_org"
     extra = 1
     list_display = ['amount', 'funding_campaign']
 
 
 class SponsorRepresentativeInline(admin.TabularInline):
     model = SponsorRepresentative
+    fk_name = "sponsor_company"
     extra = 1
 
 
@@ -33,6 +35,6 @@ class SponsorAdmin(BaseAdmin):
 
 @admin.register(Donation)
 class DonationAdmin(BaseAdmin):
-    list_display = ['sponsor', 'funding_campaign', 'amount']
-    list_filter = ['sponsor', 'funding_campaign']
-    search_fields = ['sponsor__name', 'funding_campaign__name']
+    list_display = ['sponsor_org', 'funding_campaign', 'amount']
+    list_filter = ['sponsor_org', 'funding_campaign']
+    search_fields = ['sponsor_org__name', 'funding_campaign__name']

@@ -30,3 +30,13 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+    
+    
+# Change the admin site header
+admin.site.site_header = "Edufund Administration"
+
+# Change the site title
+admin.site.site_title = "Edufund Portal"
+
+# Change the index title
+admin.site.index_title = "Welcome to Edufund Management Portal"
