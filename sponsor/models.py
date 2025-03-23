@@ -56,7 +56,7 @@ class Donation(BaseModel):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.sponsor.name
+        return self.sponsor_org.name
 
     def create(self, *args, **kwargs):
         self.created_by = self.request.user
