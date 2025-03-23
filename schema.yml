@@ -27,6 +27,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -54,6 +55,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -77,6 +79,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -111,6 +114,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -143,6 +147,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -164,6 +169,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -188,6 +194,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -215,6 +222,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -237,6 +245,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -271,6 +280,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -303,6 +313,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -324,6 +335,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -348,6 +360,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -375,6 +388,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -397,6 +411,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -431,6 +446,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -463,6 +479,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -484,6 +501,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -508,6 +526,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -537,6 +556,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -565,6 +585,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -592,6 +613,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -614,6 +636,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -648,6 +671,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -680,6 +704,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -701,6 +726,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -725,6 +751,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -752,6 +779,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -780,6 +808,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -807,6 +836,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -829,6 +859,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -863,6 +894,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -895,6 +927,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -916,6 +949,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -940,6 +974,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -967,6 +1002,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -989,6 +1025,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1023,6 +1060,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1055,6 +1093,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1076,6 +1115,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1094,6 +1134,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1128,6 +1169,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1160,6 +1202,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1181,6 +1224,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1205,6 +1249,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1232,6 +1277,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1260,6 +1306,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1287,6 +1334,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1309,6 +1357,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1343,6 +1392,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1375,6 +1425,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1396,6 +1447,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1414,6 +1466,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1448,6 +1501,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1480,6 +1534,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1501,6 +1556,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1525,6 +1581,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1552,6 +1609,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1574,6 +1632,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -1608,6 +1667,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1640,6 +1700,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1661,6 +1722,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1766,6 +1828,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1792,6 +1855,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -1815,6 +1879,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1848,6 +1913,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1880,6 +1946,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1901,6 +1968,7 @@ paths:
       security:
       - basicAuth: []
       - jwtAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1920,6 +1988,9 @@ components:
           type: string
           format: email
           maxLength: 254
+        created_by:
+          type: string
+          readOnly: true
         date_added:
           type: string
           format: date-time
@@ -1932,6 +2003,7 @@ components:
           type: integer
       required:
       - amount
+      - created_by
       - date_added
       - email
       - funding_campaign
@@ -1946,10 +2018,6 @@ components:
         sponsor:
           type: string
           format: uri
-        amount:
-          type: string
-          format: decimal
-          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
         date_added:
           type: string
           format: date-time
@@ -1958,15 +2026,26 @@ components:
           type: string
           format: date-time
           readOnly: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        created_by:
+          type: integer
+          readOnly: true
         funding_campaign:
+          type: integer
+        sponsor_org:
           type: integer
       required:
       - amount
+      - created_by
       - date_added
       - funding_campaign
       - id
       - last_modified
       - sponsor
+      - sponsor_org
     FundingCampaign:
       type: object
       properties:
@@ -2300,6 +2379,9 @@ components:
           type: string
           format: email
           maxLength: 254
+        created_by:
+          type: string
+          readOnly: true
         date_added:
           type: string
           format: date-time
@@ -2319,10 +2401,6 @@ components:
         sponsor:
           type: string
           format: uri
-        amount:
-          type: string
-          format: decimal
-          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
         date_added:
           type: string
           format: date-time
@@ -2331,7 +2409,16 @@ components:
           type: string
           format: date-time
           readOnly: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        created_by:
+          type: integer
+          readOnly: true
         funding_campaign:
+          type: integer
+        sponsor_org:
           type: integer
     PatchedFundingCampaign:
       type: object
@@ -2434,11 +2521,6 @@ components:
         school:
           type: string
           format: uri
-        document:
-          type: string
-          format: uri
-        type_of_document:
-          $ref: '#/components/schemas/TypeOfDocumentEnum'
         date_added:
           type: string
           format: date-time
@@ -2446,6 +2528,14 @@ components:
         last_modified:
           type: string
           format: date-time
+          readOnly: true
+        document:
+          type: string
+          format: uri
+        type_of_document:
+          $ref: '#/components/schemas/TypeOfDocumentEnum'
+        created_by:
+          type: integer
           readOnly: true
     PatchedSchoolImage:
       type: object
@@ -2456,9 +2546,6 @@ components:
         school:
           type: string
           format: uri
-        image:
-          type: string
-          format: uri
         date_added:
           type: string
           format: date-time
@@ -2467,11 +2554,25 @@ components:
           type: string
           format: date-time
           readOnly: true
+        image:
+          type: string
+          format: uri
+        created_by:
+          type: integer
+          readOnly: true
     PatchedSponsor:
       type: object
       properties:
         id:
           type: integer
+          readOnly: true
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
           readOnly: true
         name:
           type: string
@@ -2496,13 +2597,8 @@ components:
         photo:
           type: string
           format: uri
-        date_added:
-          type: string
-          format: date-time
-          readOnly: true
-        last_modified:
-          type: string
-          format: date-time
+        created_by:
+          type: integer
           readOnly: true
     PatchedSponsorRepresentative:
       type: object
@@ -2513,6 +2609,14 @@ components:
         sponsor:
           type: string
           format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
         role:
           type: string
           maxLength: 100
@@ -2532,14 +2636,11 @@ components:
         photo:
           type: string
           format: uri
-        date_added:
-          type: string
-          format: date-time
+        created_by:
+          type: integer
           readOnly: true
-        last_modified:
-          type: string
-          format: date-time
-          readOnly: true
+        sponsor_company:
+          type: integer
     PatchedStudent:
       type: object
       properties:
@@ -2667,11 +2768,6 @@ components:
         school:
           type: string
           format: uri
-        document:
-          type: string
-          format: uri
-        type_of_document:
-          $ref: '#/components/schemas/TypeOfDocumentEnum'
         date_added:
           type: string
           format: date-time
@@ -2680,7 +2776,16 @@ components:
           type: string
           format: date-time
           readOnly: true
+        document:
+          type: string
+          format: uri
+        type_of_document:
+          $ref: '#/components/schemas/TypeOfDocumentEnum'
+        created_by:
+          type: integer
+          readOnly: true
       required:
+      - created_by
       - date_added
       - document
       - id
@@ -2695,9 +2800,6 @@ components:
         school:
           type: string
           format: uri
-        image:
-          type: string
-          format: uri
         date_added:
           type: string
           format: date-time
@@ -2706,7 +2808,14 @@ components:
           type: string
           format: date-time
           readOnly: true
+        image:
+          type: string
+          format: uri
+        created_by:
+          type: integer
+          readOnly: true
       required:
+      - created_by
       - date_added
       - id
       - image
@@ -2717,6 +2826,14 @@ components:
       properties:
         id:
           type: integer
+          readOnly: true
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
           readOnly: true
         name:
           type: string
@@ -2741,16 +2858,12 @@ components:
         photo:
           type: string
           format: uri
-        date_added:
-          type: string
-          format: date-time
-          readOnly: true
-        last_modified:
-          type: string
-          format: date-time
+        created_by:
+          type: integer
           readOnly: true
       required:
       - address
+      - created_by
       - date_added
       - email
       - id
@@ -2766,6 +2879,14 @@ components:
         sponsor:
           type: string
           format: uri
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified:
+          type: string
+          format: date-time
+          readOnly: true
         role:
           type: string
           maxLength: 100
@@ -2785,15 +2906,13 @@ components:
         photo:
           type: string
           format: uri
-        date_added:
-          type: string
-          format: date-time
+        created_by:
+          type: integer
           readOnly: true
-        last_modified:
-          type: string
-          format: date-time
-          readOnly: true
+        sponsor_company:
+          type: integer
       required:
+      - created_by
       - date_added
       - email
       - first_name
@@ -2940,6 +3059,10 @@ components:
     basicAuth:
       type: http
       scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
     jwtAuth:
       type: http
       scheme: bearer
